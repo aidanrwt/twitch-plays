@@ -8,5 +8,5 @@
 from config.config import *
 import lib.bot as bot
 
-bot = bot.bot(config).run()
+bot = bot.Bot(config).run()
 

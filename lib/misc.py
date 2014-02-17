@@ -39,7 +39,7 @@ def pbutton(username, button):
 
     buffer_size = 20
     buffer_used = 0
-    whitespace_size = 1
+    whitespace_size = 2
 
     buffer_used =  len(button) + whitespace_size
     buffer_left = buffer_size - buffer_used

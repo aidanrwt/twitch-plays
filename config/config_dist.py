@@ -12,7 +12,7 @@ config = {
 
     'start_throttle': {
         'enabled': True,
-        'time': 60 # time in seconds
+        'time': 10 # time in seconds
     }
 
 }

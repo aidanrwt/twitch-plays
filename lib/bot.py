@@ -1,47 +1,36 @@
-from irc import *
-from game import *
-from misc import *
+from irc import Irc
+from game import Game
+from misc import pp, pbot, pbutton
 
 import time
 
-class bot:
+class Bot:
 
     def __init__(self, config):
         self.config = config
-        self.irc = irc(config)
-        self.game = game()
-
-    def is_valid_button(self, message):
-        valid_buttons = [
-            'up', 'down', 'left', 'right',
-            'a', 'b', 'start', 'select'
-        ]
-
-        if message in valid_buttons:
-            return True
+        self.irc = Irc(config)
+        self.game = Game()
 
     def run(self):
+        last_start = time.time()
+
         while True:
-            
-            # grab newest messages as a list
             new_messages = self.irc.recv_messages(1024)
             
             if new_messages:
                 for message in new_messages:
-                    #ppi(message['channel'], message['message'], message['username'])
+                
+                    button = message['message'].lower()
+                    username = message['username']
 
-                    if not self.is_valid_button(message['message'].lower()):
+                    if not self.game.is_valid_button(button):
                         continue
 
-
-                    last_start = 0
-                    button = message['message'].lower()
-
-                    if config['start_throttle']['enabled']:
-                        if time.time() - last_start > config['start_throttle']['time']:
+                    if self.config['start_throttle']['enabled'] and button == 'start':
+                        if time.time() - last_start < self.config['start_throttle']['time']:
                             continue
 
-                    pbutton(message['username'], button)
+                    pbutton(username, button)
                     self.game.push_button(button)
 
                     if button == 'start':
