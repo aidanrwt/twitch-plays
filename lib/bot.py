@@ -2,6 +2,8 @@ from irc import *
 from game import *
 from misc import *
 
+import time
+
 class bot:
 
     def __init__(self, config):
@@ -31,8 +33,17 @@ class bot:
                     if not self.is_valid_button(message['message'].lower()):
                         continue
 
+
+                    last_start = 0
                     button = message['message'].lower()
+
+                    if config['start_throttle']['enabled']:
+                        if time.time() - last_start > config['start_throttle']['time']:
+                            continue
 
                     pbutton(message['username'], button)
                     self.game.push_button(button)
+
+                    if button == 'start':
+                        last_start = time.time()
 

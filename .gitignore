@@ -3,3 +3,4 @@
 config/config.py
 vba/*.rom
 vba/*.exe
+vba/*.sav
