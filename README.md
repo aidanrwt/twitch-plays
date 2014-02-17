@@ -1,5 +1,5 @@
-Twitch Plays Zelda
-==================
+Twitch Plays
+============
 
 Clone of [Twitch Plays Pokemon](http://twitch.tv/twitch_plays_pokemon). This uses VirtualBoyAdvance.
 
