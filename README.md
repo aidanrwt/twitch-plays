@@ -1,10 +1,11 @@
 Twitch Plays
 ============
 
-Clone of [Twitch Plays Pokemon](http://twitch.tv/twitch_plays_pokemon). This uses VirtualBoyAdvance.
+Clone of [Twitch Plays Pokemon](http://twitch.tv/twitch_plays_pokemon).
 
-Included in `vba/` is a Pokemon Emeral ROM as an example, along with the VBA .ini I've been using. 
-In your VBA, set the controls to the following -
+Included in `vba/` is the VBA .ini I've been using. 
+
+In your VBA/Emulator, set the controls to the following -
 
 ```
 Up: 0
