@@ -1,0 +1,4 @@
+.DS_STORE
+*.pyc
+config/config.py
+vba/*
