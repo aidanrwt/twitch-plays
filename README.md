@@ -3,7 +3,6 @@ Twitch Plays
 
 Clone of [Twitch Plays Pokemon](http://twitch.tv/twitch_plays_pokemon).
 
-Included in `vba/` is the VBA .ini I've been using. 
 
 
 Installation

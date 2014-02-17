@@ -17,22 +17,23 @@ class Bot:
         while True:
             new_messages = self.irc.recv_messages(1024)
             
-            if new_messages:
-                for message in new_messages:
-                
-                    button = message['message'].lower()
-                    username = message['username']
+            if not new_messages:
+                continue
 
-                    if not self.game.is_valid_button(button):
+            for message in new_messages:      
+                button = message['message'].lower()
+                username = message['username']
+
+                if not self.game.is_valid_button(button):
+                    continue
+
+                if self.config['start_throttle']['enabled'] and button == 'start':
+                    if time.time() - last_start < self.config['start_throttle']['time']:
                         continue
 
-                    if self.config['start_throttle']['enabled'] and button == 'start':
-                        if time.time() - last_start < self.config['start_throttle']['time']:
-                            continue
+                if button == 'start':
+                    last_start = time.time()
 
-                    pbutton(username, button)
-                    self.game.push_button(button)
-
-                    if button == 'start':
-                        last_start = time.time()
+                pbutton(username, button)
+                self.game.push_button(button)
 

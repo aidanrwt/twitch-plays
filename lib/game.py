@@ -24,6 +24,5 @@ class Game:
 
     def push_button(self, button):
         win32api.keybd_event(self.button_to_key(button), 0, 0, 0)
-        time.sleep(0.1)
         win32api.keybd_event(self.button_to_key(button), 0, win32con.KEYEVENTF_KEYUP, 0)
         
