@@ -28,10 +28,10 @@ class bot:
                 for message in new_messages:
                     #ppi(message['channel'], message['message'], message['username'])
 
-                    if not self.is_valid_button(message['message']):
+                    if not self.is_valid_button(message['message'].lower()):
                         continue
 
-                    button = message['message']
+                    button = message['message'].lower()
 
                     pbutton(message['username'], button)
                     self.game.push_button(button)
