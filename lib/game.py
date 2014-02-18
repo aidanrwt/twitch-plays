@@ -1,6 +1,5 @@
 import win32api
 import win32con
-
 import time
 
 class Game:
@@ -16,6 +15,9 @@ class Game:
         'select': 0x37
     }
 
+    def get_valid_buttons(self):
+        return [button for button in self.keymap.keys()]
+
     def is_valid_button(self, button):
         return button in self.keymap.keys()
 
@@ -24,5 +26,5 @@ class Game:
 
     def push_button(self, button):
         win32api.keybd_event(self.button_to_key(button), 0, 0, 0)
+        time.sleep(.15)
         win32api.keybd_event(self.button_to_key(button), 0, win32con.KEYEVENTF_KEYUP, 0)
-        

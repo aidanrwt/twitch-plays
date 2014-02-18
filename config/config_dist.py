@@ -7,12 +7,12 @@ config = {
 
     'account': {
         'username': 'username',
-        'password': 'oauth:' # get this fromm http://twitchapps.com/tmi/
+        'password': 'oauth:' # http://twitchapps.com/tmi/
     },
 
     'start_throttle': {
         'enabled': True,
-        'time': 10 # time in seconds
+        'time': 10
     }
 
 }
