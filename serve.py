@@ -1,7 +1,6 @@
 #!/usr/bin/env python
-# coding: utf8
 
-# Twitch Plays Pokemon
+# Twitch Plays
 # Clone of twitch.tv/twitchplayspokemon
 # Written by Aidan Thomson <aidraj0 at gmail dot com>
 
