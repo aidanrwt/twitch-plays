@@ -12,17 +12,16 @@ class Bot:
         self.irc = Irc(config)
         self.game = Game()
 
-        self.message_buffer = [{'username': '', 'button': ''}] * 10
+        self.message_buffer = [{'username': '', 'button': ''}] * self.config['misc']['chat_height']
 
 
     def set_message_buffer(self, message):
-        chat_height = 10
-        self.message_buffer.insert(chat_height - 1, message)
+        self.message_buffer.insert(self.config['misc']['chat_height'] - 1, message)
         self.message_buffer.pop(0)
 
 
     def run(self):
-        last_start = time.time()
+        throttle_timers = {button:0 for button in config['throttled_buttons'].keys()}
 
         while True:
             new_messages = self.irc.recv_messages(1024)
@@ -37,14 +36,12 @@ class Bot:
                 if not self.game.is_valid_button(button):
                     continue
 
-                print button
-
-                if self.config['start_throttle']['enabled'] and button == 'start':
-                    if time.time() - last_start < self.config['start_throttle']['time']:
+                if button in self.config['throttled_buttons']:
+                    if time.time() - throttle_timers[button] < self.config['throttled_buttons'][button]:
                         continue
 
-                if button == 'start':
-                    last_start = time.time()
+                    throttle_timers[button] = time.time()
+         
 
                 self.set_message_buffer({'username': username, 'button': button})
                 pbutton(self.message_buffer)

@@ -18,4 +18,5 @@ def pbot(message, channel=''):
 
 def pbutton(message_buffer):
     system('cls')
-    print '\n'.join(['{0:<10s} {1:>6s}'.format(message['username'][:10], message['button']) for message in message_buffer])
+    print '\n\n'
+    print '\n'.join([' {0:<12s} {1:>6s}'.format(message['username'][:12].title(), message['button'].lower()) for message in message_buffer])
