@@ -67,8 +67,7 @@ class Irc:
         self.ping(data)
 
         if self.check_has_message(data):
-            data = filter(None, data.split('\r\n'))
-            return [self.parse_message(line) for line in data]
+            return [self.parse_message(line) for line in filter(None, data.split('\r\n'))]
 
     def check_login_status(self, data):
         if not re.match(r'^:(testserver\.local|tmi\.twitch\.tv) NOTICE \* :Login unsuccessful\r\n$', data): return True
