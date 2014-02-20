@@ -12,6 +12,10 @@ config = {
 
     'throttled_buttons': {
         'start': 10
+    },
+
+    'misc': {
+        'chat_height': 13
     }
 
 }
