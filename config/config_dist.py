@@ -10,9 +10,8 @@ config = {
         'password': 'oauth:' # http://twitchapps.com/tmi/
     },
 
-    'start_throttle': {
-        'enabled': True,
-        'time': 10
+    'throttled_buttons': {
+        'start': 10
     }
 
 }
